@@ -19,9 +19,9 @@ public class Zadatak4 {
         int b = Integer.parseInt(JOptionPane.showInputDialog("Unesi drugi broj"));
         int c = Integer.parseInt(JOptionPane.showInputDialog("Unesi treći broj"));
         
-        if(a > b & a > c) {
+        if(a >= b & a >= c) {
             System.out.println(a);
-        } else if (b > c & b > a){
+        } else if (b >= c & b >= a){
             System.out.println(b);
         }
         else {
