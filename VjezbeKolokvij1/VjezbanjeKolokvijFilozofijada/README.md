@@ -43,7 +43,7 @@ public static void main(String[] args) {
 Unutar konstruktora moramo definirati kako ćemo prijave spremati kao ArrayList te imamo metodu koja će sadržavati do-while petlju kako bismo osigurali da "Program unosi prijave dok se ne prekine unos (slovo n)". Također unutar konstruktora definiramo dvije metode, a to su metode koje se traže u zadatku u zadnjoj rečenici.
 
 Također potrebno je napraviti unos i prijave i studenta (obje klase koje smo definirali) što radimo pomoću klase Unos u kojoj smo definirali unos za sve tipove podataka. Za unos prijava i studenata radimo metode.
->Jedna lsita = 3 metode
+>Jedna lista = 3 metode
 
 >Dvije liste = 4 metode
 
