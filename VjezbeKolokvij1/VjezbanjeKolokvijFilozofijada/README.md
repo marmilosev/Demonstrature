@@ -23,7 +23,7 @@ U ovom primjeru definirano je:
 Kreiramo dvije klase (Student i Prijava u ovom slučaju), kreiramo svojstva za svaku klasu te generiramo Gettere i Settere (Alt + Insert na tipkovnici ili desni klik miša).
 
 ## 3. korak
-S obzirom da smo kreirali klasu sa svojstvima, a naša svojstva imaju tipove podataka (int, String, Date, float ...) kreiramo klasu Unos koja će nam poslužiti kako bismo si osigurali 15 bodova na kolokviju, 
+S obzirom da smo kreirali klasu sa svojstvima, a naša svojstva imaju tipove podataka (int, String, Date, float ...) kreiramo klasu Pomocno koja će nam poslužiti kako bismo si osigurali 15 bodova na kolokviju, 
 odnosno to će biti klasa koja kontrolira i onemogućuje nastavak rada dok se ne unese tražena vrijednost.
 **Tu klasu ćete uvijek imati i bit će ista!** - neovisno o tome koji primjer kolokvija radili.
 
@@ -40,8 +40,10 @@ public static void main(String[] args) {
     } 
 ```
 
-Unutar konstruktora moramo definirati kako ćemo prijave spremati kao ArrayList te imamo do-while petlju kako bismo osigurali da "Program unosi prijave dok se ne prekine unos (slovo n)". Također unutar konstruktora definiramo dvije metode, a to su metode koje se traže u zadatku u zadnjoj rečenici.
+Unutar konstruktora moramo definirati kako ćemo prijave spremati kao ArrayList te imamo metodu koja će sadržavati do-while petlju kako bismo osigurali da "Program unosi prijave dok se ne prekine unos (slovo n)". Također unutar konstruktora definiramo dvije metode, a to su metode koje se traže u zadatku u zadnjoj rečenici.
 
-Također potrebno je napraviti unos i prijave i studenta (obje klase koje smo definirali) što radimo pomoću klase Unos u kojoj smo definirali unos za sve tipove podataka. 
+Također potrebno je napraviti unos i prijave i studenta (obje klase koje smo definirali) što radimo pomoću klase Unos u kojoj smo definirali unos za sve tipove podataka. Za unos prijava i studenata radimo metode.
+>Jedna lsita = 3 metode
+>Dvije liste = 4 metode
 
 A dvije metode koje smo definirali unutar konstruktora rade na principu izlistanja i obrade podataka iz liste prijava.
