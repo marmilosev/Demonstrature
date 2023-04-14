@@ -15,13 +15,14 @@ import javax.swing.JOptionPane;
  *
  * @author marija
  */
-public class Unos {
+public class Pomocno {
+    public static Scanner ulaz;
     
  public static int unosInteger(String poruka) {
         while (true) {
             System.out.println(poruka);
             try {
-                return Integer.parseInt(Start.scanner.nextLine());
+                return Integer.parseInt(Pomocno.ulaz.nextLine());
             } catch (Exception e) {
                 System.out.println("Neispravan podatak");
             }
@@ -32,7 +33,7 @@ public class Unos {
         String unos = "";
         while (true) {
             System.out.println(poruka);
-            unos = Start.scanner.nextLine().trim();
+            unos = Pomocno.ulaz.nextLine().trim();
             if (unos.isEmpty()) {
                 System.out.println("Neispravan podatak");
                 continue;
@@ -44,11 +45,11 @@ public class Unos {
 
     public static float unosFloat(String poruka) {
         while (true) {
-            System.out.print(poruka);
+            System.out.println(poruka);
             try {
-                return Float.parseFloat(Start.scanner.nextLine());
+                return Float.parseFloat(Pomocno.ulaz.nextLine());
             } catch (Exception e) {
-                System.out.println("Decimalni broj s točkom");
+                System.out.println("Prosjek obavezno");
             }
         }
     }
@@ -56,9 +57,9 @@ public class Unos {
     public static Date unosDate(String poruka) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
         while (true) {
-            System.out.print(poruka);
+            System.out.println(poruka);
             try {
-                String input = Start.scanner.nextLine();
+                String input = Pomocno.ulaz.nextLine();
                 return sdf.parse(input);
             } catch (ParseException e) {
                 System.out.println("Unos datuma obavezno u formatu dd.MM.yyyy.");
@@ -73,21 +74,24 @@ public class Unos {
     }
 
     public static boolean unosBoolean(String poruka) {
-        while (true) {
-            System.out.print(poruka + " (true/false) ");
-            try {
-                return Boolean.parseBoolean(Start.scanner.nextLine());
-            } catch (Exception e) {
-                System.out.println("Neispravan podatak");
-            }
+    while (true) {
+        System.out.println(poruka);
+        String input = Pomocno.ulaz.nextLine();
+        if (input.equalsIgnoreCase("true")) {
+            return true;
+        } else if (input.equalsIgnoreCase("false")) {
+            return false;
+        } else {
+            System.out.println("Neispravan unos, unijeti true ili false");
         }
+    }
     }
 
     public static double unosDouble(String poruka) {
         while (true) {
-            System.out.print(poruka + " ");
+            System.out.println(poruka + " ");
             try {
-                return Double.parseDouble(Start.scanner.nextLine());
+                return Double.parseDouble(Pomocno.ulaz.nextLine());
             } catch (Exception e) {
                 System.out.println("Neispravan podatak");
             }

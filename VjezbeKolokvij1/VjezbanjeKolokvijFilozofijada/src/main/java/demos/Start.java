@@ -13,38 +13,44 @@ import java.util.Scanner;
  * @author marija
  */
 public class Start {
-    public static Scanner scanner;
     List<Prijava> prijave;
 
     public Start() {
-        Start.scanner = new Scanner(System.in);
+        Pomocno.ulaz = new Scanner(System.in);
         prijave = new ArrayList<>();
         
-        do{
-            unosPrijave();
-        }while(!Unos.unosString("Unos n za prekid unosa prijava").equals("n"));
+        unosPrijave();
         
         ispisPrijave();
         ispisProsjek();
+        
+        Pomocno.ulaz.close();
     }
 
     private void unosPrijave() {
+        do{
+            unosPrijava();
+        }while(!Pomocno.unosString("Unos n za prekid unosa prijava").equals("n"));
+        
+    }
+    
+    private void unosPrijava() {
         System.out.println("Unos nove prijave");
         Prijava prijava = new Prijava();
-        prijava.setSifra(Unos.unosInteger("Upiši šifru prijave"));
-        prijava.setDatumPrijave(Unos.unosDate("Upiši datum prijave "));
+        prijava.setSifra(Pomocno.unosInteger("Upiši šifru prijave"));
+        prijava.setDatumPrijave(Pomocno.unosDate("Upiši datum prijave "));
         prijava.setStudent(unosStudent());
         
         prijave.add(prijava);
     }
-    
+
     private Student unosStudent() {
         System.out.println("Unos studenta na prijavu");
         Student student = new Student();
-        student.setJmbag(Unos.unosInteger("Unesi JMBAG"));
-        student.setIme(Unos.unosString("Unesi ime"));
-        student.setPrezime(Unos.unosString("Unesi prezime"));
-        student.setProsjek(Unos.unosFloat("Unesi prosjek na dvije decimale "));
+        student.setJmbag(Pomocno.unosInteger("Unesi JMBAG"));
+        student.setIme(Pomocno.unosString("Unesi ime"));
+        student.setPrezime(Pomocno.unosString("Unesi prezime"));
+        student.setProsjek(Pomocno.unosFloat("Unesi prosjek na dvije decimale "));
         return student;
     }
 
@@ -76,6 +82,7 @@ public class Start {
     public static void main(String[] args) {
         new Start();
     }
+
 
     
     
