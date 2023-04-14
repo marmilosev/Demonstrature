@@ -74,14 +74,14 @@ public class Pomocno {
         } else if (input.equalsIgnoreCase("false")) {
             return false;
         } else {
-            System.out.println("Neispravan unos, unijeti true ili false");
+            System.out.println("Neispravan unos");
         }
     }
 }
    
    public static float ucitajFloat(String poruka) {
         while (true) {
-            System.out.print(poruka);
+            System.out.println(poruka);
             try {
                 return Float.parseFloat(Pomocno.ulaz.nextLine());
             } catch (Exception e) {
