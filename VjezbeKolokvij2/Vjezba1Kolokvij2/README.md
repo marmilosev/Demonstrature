@@ -3,8 +3,7 @@
 
 1. Kreirati model i mapirati (baza – Dbeaver).
 
-![ERA dijagram](https://github.com/marmilosev/Demonstrature/tree/main/VjezbeKolokvij2/Vjezba1Kolokvij2/Baza.png)
-![Baza](https://github.com/marmilosev/Demonstrature/assets/80062620/6bcd2254-58d7-4d47-8e2a-bf747d5ef091)
+![ERA dijagram](https://github.com/marmilosev/Demonstrature/assets/80062620/6bcd2254-58d7-4d47-8e2a-bf747d5ef091)
 
 
 2. CRUD operacije - controller obrada podataka
