@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
  * @author marija
  */
 @Entity
+//entity -- entitet, odnosno tablica u bazi
 public class Mjesto extends Entitet{
     
     private String naziv;
@@ -22,6 +23,12 @@ public class Mjesto extends Entitet{
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
+
+    @Override
+    public String toString() {
+        return naziv;
+    }
+    
     
     
     

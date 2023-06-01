@@ -14,6 +14,8 @@ import jakarta.persistence.MappedSuperclass;
  * @author marija
  */
 @MappedSuperclass
+//Annotacija @MappedSuperclass u Javi označava da je određena klasa roditeljska klasa (superklasa) za druge entitetske klase i da nema 
+//svoju direktnu mapiranu tablicu u bazi podataka. 
 public abstract class Entitet {
     
     @Id

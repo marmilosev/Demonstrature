@@ -6,7 +6,10 @@ package ffos.view;
 
 import com.github.javafaker.Faker;
 import ffos.controller.ObradaMjesto;
+import ffos.controller.ObradaOsoba;
 import ffos.controller.ObradaSport;
+import ffos.model.Mjesto;
+import ffos.model.Sport;
 
 /**
  *
@@ -54,8 +57,18 @@ public class Izbornik extends javax.swing.JFrame {
         });
 
         btnUnosOsoba.setText("Unos Osoba");
+        btnUnosOsoba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnosOsobaActionPerformed(evt);
+            }
+        });
 
         btnCrudMjesto.setText("CRUD Mjesto");
+        btnCrudMjesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrudMjestoActionPerformed(evt);
+            }
+        });
 
         btnCrudSport.setText("CRUD Sport");
         btnCrudSport.addActionListener(new java.awt.event.ActionListener() {
@@ -65,40 +78,45 @@ public class Izbornik extends javax.swing.JFrame {
         });
 
         btnCrudOsoba.setText("CRUD Osoba");
+        btnCrudOsoba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrudOsobaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUnosMjesto)
                     .addComponent(btnUnosSport)
                     .addComponent(btnUnosOsoba))
-                .addGap(152, 152, 152)
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrudOsoba)
                     .addComponent(btnCrudSport)
                     .addComponent(btnCrudMjesto))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUnosMjesto)
                     .addComponent(btnCrudMjesto))
-                .addGap(66, 66, 66)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUnosSport)
                     .addComponent(btnCrudSport))
-                .addGap(85, 85, 85)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUnosOsoba)
                     .addComponent(btnCrudOsoba))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,15 +124,29 @@ public class Izbornik extends javax.swing.JFrame {
 
     private void btnUnosMjestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnosMjestoActionPerformed
         // TODO add your handling code here:
+        //Ovdje se stvara objekt klase ObradaMjesto. 
+        //To je klasa koja se koristi za obradu entiteta Mjesto pomoću Hibernate ORM-a
+        //Stvaranje objekta ObradaMjesto omogućuje pristup metodama i logici specifičnoj za obradu entiteta Mjesto.
         ObradaMjesto om = new ObradaMjesto();
+        //Ovdje se stvara objekt klase Faker iz biblioteke faker. Faker je biblioteka za generiranje lažnih (dummy) podataka. 
+        //Stvaranje objekta Faker omogućuje generiranje lažnih podataka za unos u entitete Mjesto
         Faker faker = new Faker();
         
+        //Ovdje se izvršava petlja koja prolazi kroz 21 iteraciju. Svaka iteracija predstavlja unos jednog entiteta Mjesto.
         for(int i=0; i<21; i++){
+            // Metoda setNew() iz klase ObradaMjesto se poziva kako bi se postavio novi entitet Mjesto u objekt ObradaMjesto. 
+            //Ova metoda inicijalizira novi entitet Mjesto i postavlja ga u atribut entitet u klasi ObradaMjesto.
             om.setNew();
+            // Metoda setPodaci(String naziv) iz klase ObradaMjesto se poziva kako bi se postavio naziv (podaci) entiteta Mjesto.
+            //U ovom slučaju, koristi se faker.country().capital() da se generira lažno ime grada, a to se prosljeđuje metodi setPodaci().
             om.setPodaci(faker.country().capital());
             try {
+                // Metoda create() iz klase ObradaMjesto se poziva kako bi se stvorio novi entitet Mjesto u bazi podataka. 
+                //Ova metoda obavlja potrebne operacije za spremanje entiteta u bazu podataka putem Hibernate ORM-a, 
+                //kao što je početak i potvrda transakcije te pohrana objekta u bazu.
                 om.create();
             } catch (Exception e) {
+                //Ovdje se hvataju eventualne iznimke (exceptions) koje mogu nastati prilikom izvršavanja metode create(). Ako se iznimka uhvati, ispisuje se poruka iznimke u konzolu
                 System.out.println(e.getMessage());
             }
         }
@@ -136,10 +168,43 @@ public class Izbornik extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnUnosSportActionPerformed
 
+    private void btnUnosOsobaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnosOsobaActionPerformed
+        // TODO add your handling code here:
+          ObradaOsoba oo = new ObradaOsoba();
+        Faker faker = new Faker();
+        Mjesto mjesto;
+        Sport sport;
+        for(int i=0; i<33; i++){
+            mjesto = new Mjesto();
+            mjesto.setNaziv(faker.country().name());
+            sport = new Sport();
+            sport.setNaziv(faker.team().name());
+            sport.setVrsta(faker.team().sport());
+            oo.setNew();
+            oo.setPodaci(faker.name().firstName(), faker.name().lastName(), faker.number().digits(10), mjesto, sport);
+            try {
+                oo.create();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnUnosOsobaActionPerformed
+
+    private void btnCrudMjestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudMjestoActionPerformed
+        // TODO add your handling code here:
+        new FormaMjesto().setVisible(true);
+    }//GEN-LAST:event_btnCrudMjestoActionPerformed
+
     private void btnCrudSportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudSportActionPerformed
         // TODO add your handling code here:
         new FormaSport().setVisible(true);
     }//GEN-LAST:event_btnCrudSportActionPerformed
+
+    private void btnCrudOsobaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudOsobaActionPerformed
+        // TODO add your handling code here:
+        new FormaOsoba().setVisible(true);
+    }//GEN-LAST:event_btnCrudOsobaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrudMjesto;

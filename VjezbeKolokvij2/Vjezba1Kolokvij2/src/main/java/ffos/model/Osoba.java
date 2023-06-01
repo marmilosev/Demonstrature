@@ -1,5 +1,6 @@
 package ffos.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,14 +10,14 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Osoba extends Entitet{
 
-    
     private String ime;
     private String prezime;
     private String oib;
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private Mjesto mjesto;
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private Sport sport;
+    
 
     public String getIme() {
         return ime;
@@ -56,6 +57,11 @@ public class Osoba extends Entitet{
 
     public void setSport(Sport sport) {
         this.sport = sport;
+    }
+
+    @Override
+    public String toString() {
+        return ime + " " + prezime;
     }
     
     

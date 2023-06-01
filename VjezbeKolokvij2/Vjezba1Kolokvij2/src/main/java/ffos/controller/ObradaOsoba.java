@@ -4,6 +4,8 @@
  */
 package ffos.controller;
 
+import ffos.model.Mjesto;
+import ffos.model.Osoba;
 import ffos.model.Sport;
 import java.util.List;
 
@@ -11,15 +13,18 @@ import java.util.List;
  *
  * @author marija
  */
-public class ObradaSport extends Obrada<Sport>{
+public class ObradaOsoba extends Obrada<Osoba>{
     
-    public void setPodaci(String naziv, String vrsta){
+     public void setPodaci(String ime, String prezime, String oib, Mjesto mjesto, Sport sport){
         if(entitet == null){
-            entitet = new Sport();
+            entitet = new Osoba();
         }
         
-        entitet.setNaziv(naziv);
-        entitet.setVrsta(vrsta);
+        entitet.setIme(ime);
+        entitet.setPrezime(prezime);
+        entitet.setOib(oib);
+        entitet.setMjesto(mjesto);
+        entitet.setSport(sport);
     }
 
     @Override
@@ -38,13 +43,13 @@ public class ObradaSport extends Obrada<Sport>{
     }
 
     @Override
-    public List<Sport> read() {
-        return session.createQuery("from Sport", Sport.class).list();
+    public List<Osoba> read() {
+        return session.createQuery("from Osoba", Osoba.class).list();
     }
 
     @Override
     public void setNew() {
-        entitet = new Sport();
+        entitet = new Osoba();
     }
     
     

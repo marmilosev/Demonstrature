@@ -13,19 +13,28 @@ import javax.swing.JOptionPane;
  *
  * @author marija
  */
+//klasa predstavlja formu (prozor) za unos, prikaz, ažuriranje i brisanje podataka o sportovima.
 public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
     
+    //deklarira privatni atribut obrada tipa ObradaSport. Ova instanca klase ObradaSport će se koristiti za obradu podataka o sportovima.
     private ObradaSport obrada;
 
     /**
      * Creates new form FormaSport
      */
+    
+    //konstruktor klase FormaSport. Konstruktor se poziva prilikom stvaranja instance ove klase. 
+    //U konstruktoru se inicijaliziraju komponente korisničkog sučelja (GUI), stvara se objekt ObradaSport i 
+    //poziva se metoda ucitajPodatke() za prikaz početnih podataka.
     public FormaSport() {
         initComponents();
         obrada = new ObradaSport();
         ucitajPodatke();
     }
     
+    //metoda implementira metodu ucitajPodatke() iz sučelja ViewAktivnosti. 
+    //Ovdje se dohvaćaju podaci o sportovima pomoću metode read() iz objekta obrada, 
+    //a zatim se ti podaci prikazuju u JList komponenti (lstEntiteti).
     @Override
     public void ucitajPodatke() {
         DefaultListModel<Sport> s = new DefaultListModel<>();
@@ -66,12 +75,6 @@ public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
 
         jLabel2.setText("Vrsta");
 
-        txtNaziv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNazivActionPerformed(evt);
-            }
-        });
-
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,49 +101,52 @@ public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(txtNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                        .addComponent(txtVrsta))
                     .addComponent(btnCreate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnUpdate))
-                .addContainerGap(222, Short.MAX_VALUE))
+                    .addComponent(btnDelete))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnCreate)
                         .addGap(29, 29, 29)
-                        .addComponent(btnDelete)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnUpdate)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtVrsta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(btnCreate)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete)))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdate)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
-        // TODO add your handling code here:
+        // Ova metoda se poziva kada se promijeni selekcija u JList komponenti (lstEntiteti). 
+        //Ako se događaj ne odnosi na završetak mijenjanja selekcije (getValueIsAdjusting()) ili nije odabrana nikakva vrijednost (getSelectedValue() == null), metoda se prekida. 
+        //Inače, postavlja se odabrani entitet u obrada, a zatim se prikazuju podaci o tom entitetu u tekstualnim poljima (txtNaziv i txtVrsta).
         if(evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue() == null){
             return;
         }
@@ -151,8 +157,10 @@ public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // TODO add your handling code here:
-        obrada.setNew();
+        //Ova metoda se poziva kada korisnik pritisne gumb "Create". 
+        //Metoda stvara novi entitet sporta pomoću metoda setNew() i setPodaci() iz objekta obrada, koristeći podatke unesene u tekstualnim poljima (txtNaziv i txtVrsta). 
+        //Zatim se novi entitet sprema u bazu podataka pomoću metode create() iz objekta obrada, a zatim se ponovno učitavaju podaci pomoću metode ucitajPodatke().
+         obrada.setNew();
         obrada.setPodaci(txtNaziv.getText(), txtVrsta.getText());
         
         try {
@@ -163,13 +171,11 @@ public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void txtNazivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNazivActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNazivActionPerformed
-
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        if(lstEntiteti.getSelectedValue() == null){
+        //metoda se poziva kada korisnik pritisne gumb "Delete". Ako nije odabrana nikakva vrijednost (lstEntiteti.getSelectedValue() == null), metoda se prekida. 
+        //Inače, odabrani entitet se postavlja u obrada, a zatim se entitet briše iz baze podataka pomoću metode delete()
+         if(lstEntiteti.getSelectedValue() == null){
             return;
         }
         obrada.setEntitet(lstEntiteti.getSelectedValue());
@@ -183,15 +189,16 @@ public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        //metoda se poziva kada korisnik pritisne gumb "Update". 
+        //Metoda postavlja podatke o sportu pomoću metode setPodaci() iz objekta obrada, koristeći podatke unesene u tekstualnim poljima (txtNaziv i txtVrsta). 
+        //Zatim se ažurira odabrani entitet u bazi podataka pomoću metode update() iz objekta obrada, a zatim se ponovno učitavaju podaci pomoću metode ucitajPodatke().
          obrada.setPodaci(txtNaziv.getText(), txtVrsta.getText());
-        
         try {
             obrada.update();
             ucitajPodatke();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
@@ -207,5 +214,5 @@ public class FormaSport extends javax.swing.JFrame implements ViewAktivnosti{
     private javax.swing.JTextField txtVrsta;
     // End of variables declaration//GEN-END:variables
 
-   
+
 }
