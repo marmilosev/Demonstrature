@@ -32,7 +32,7 @@ HibernateBootstrap --> ovo se preuzima
 ## 3. korak
 - prvo radimo model, paziti na veze jedan na više i više na više (OneToMany ili ManyToMany).
 Ako je veza ManyToMany onda imamo listu. Također paziti da je na svojstva koja su zajednička - ona će biti **apstraktna klasa** koju **nasljeđuju** druge klase.
-- generirati gettere i settere
+- generirati gettere i settere + dodati toString() metodu
 ```
 @MappedSuperclass --> oznaka apstraktne klase
 @Id
