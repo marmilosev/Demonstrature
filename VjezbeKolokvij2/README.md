@@ -102,6 +102,10 @@ public abstract class Obrada<T> {
 
 - zatim kreiramo klase još onoliko obradi koliko imamo klasa
 - te obrade izgledaju tako da prvo nasljedimo (extends) Obrada klasu, zatim klikom na žaruljicu implementiramo sve metode Obrade i onda obrišemo iz tih metoda throw new i pišemo svoj kod za pojedinu metodu
+- a mijenjamo samo read() metodu tako što dodajemo:
+```
+return session.createQuery("from Mjesto", Mjesto.class).list(); --> umjesto Mjesto ono što nama treba
+```
 
 ## 5. korak
 - Kreiramo view
@@ -111,3 +115,4 @@ public abstract class Obrada<T> {
 new Izbornik().setVisible(true);
 ```
 - Zatim radimo design i source za sve prozore i izbornik
+- Ne zaboravite prozor centrirati.
