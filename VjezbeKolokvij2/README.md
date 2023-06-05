@@ -14,6 +14,14 @@ HibernateBootstrap --> ovo se preuzima
 - Učitati taj raspakirani folder u Apache Netbeansu i promijeniti mu naziv onako kako je zadano (desni klik - Rename - sva tri označiti)
 
 - U Project Files - pom.xml dodati faker dependency (iz Maven Repository)
+```
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+```
 
 - Nakon toga trebamo kliknuti desni klik na projekt i Build with dependencies gdje u output prozoru treba pisati BUILD SUCCESS.
 
