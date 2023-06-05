@@ -125,3 +125,6 @@ new Izbornik().setVisible(true);
 ```
 - Zatim radimo design i source za sve prozore i izbornik
 - Ne zaboravite prozor centrirati.
+- 4 metode koje trebaju biti u View koje su generirane dizajnom:
+   - Na listu - desni klik --> Events --> ListSelection --> valueChanged 
+   - Ostale tri dvoklik na gumb Create, Update i Delete
