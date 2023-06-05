@@ -50,7 +50,7 @@ Ako je veza ManyToMany onda imamo listu. Također paziti da je na svojstva koja 
 ```
 - zatim se vraćamo u hibernate.cfg.xml datoteku i navodimo mapirane klase koje smo kreirali
 ```
-<mapping class="paket.podpaket(i).Klasa" />
+<mapping class="paket.podpaket/i.Klasa" />
 ```
 - pokrećemo naš projekt kako bismo kreirali tablice i provjerili je li naš ER dijagram isti kao dobiveni na kolokviju
 
