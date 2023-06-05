@@ -19,14 +19,20 @@ HibernateBootstrap --> ovo se preuzima
 
 - Zatim u Other Sources - u hibernate.cfg.xml treba promijeniti određene stvari
  ```
-<property name="connection.url">jdbc:mariadb://localhost/osobehib</property>
--- mijenja se osobehib prema onome kako se zove baza
+<property name="connection.url">jdbc:mariadb://localhost/ime_baze</property>
+-- mijenja se prema onome kako se zove baza
  ```
 
  ## 2. korak
  - Otvaramo xampp i pokrećemo mySQL
  - Otvaramo DBeaver i kreiramo bazu podataka na localhost:3306
+```
+create database ime_baze; 
+```
  - dajemo ovlasti korisniku
+```
+grant all privileges on ime_baze.* to 'p2'@'localhost' identified by 'tomislav';
+```
  - i sada smo spremni za pravljenje naših tablica, odnosno za kucanje koda
 
 ## 3. korak
@@ -43,6 +49,9 @@ Ako je veza ManyToMany onda imamo listu. Također paziti da je na svojstva koja 
 'extends' --> oznaka da nasljeđuje
 ```
 - zatim se vraćamo u hibernate.cfg.xml datoteku i navodimo mapirane klase koje smo kreirali
+```
+<mapping class="paket.podpaket(i).Klasa" />
+```
 - pokrećemo naš projekt kako bismo kreirali tablice i provjerili je li naš ER dijagram isti kao dobiveni na kolokviju
 
 ## 4. korak
